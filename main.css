@@ -4,13 +4,14 @@ body {
     font-family: 'Poppins', sans-serif;
     background: url('images/wallpaper05.jpg') no-repeat center center/cover;
     color: white;
-    height: 100vh;
     position: relative;
+    margin: 0;
+    padding-top: 70px;
 }
 
 body::before {
     content: "";
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -25,12 +26,12 @@ body::before {
 }
 
 .header {
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0 15px;
+    min-height: calc(100vh - 70px);
 }
 
 .header h1 {
@@ -62,7 +63,7 @@ body::before {
 
 .navbar {
     background: transparent;
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: 3;
 }
