@@ -60,9 +60,6 @@ const validateInputs = () => {
     if (productIdValue === '') {
         setError(productId, 'Product ID is required');
         isValid = false;
-    } else if (!/^\d{8}$/.test(productIdValue)) {
-        setError(productId, 'Product ID must be exactly 8 digits');
-        isValid = false;
     } else {
         setSuccess(productId);
     }
