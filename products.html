@@ -60,39 +60,55 @@
     <div class="container">
       <div class="header-content text-center">
         <h1>Product Management</h1>
-        <p>Manage product listings!</p>
+        <p>Manage product listings.</p>
       </div>
 
-      <!-- Form -->
+      <!-- Product Management Form -->
       <div class="row justify-content-center mt-5">
         <div class="col-md-6">
           <div class="form-container">
             <!-- Form start -->
-            <form id="form" action="#">
+            <form id="product-form" action="#">
+              <!-- Product ID -->
               <div class="input-group mb-3 p-3">
-                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                <input id="username" type="text" class="form-control" placeholder="Username">
+                <span class="input-group-text"><i class="bi bi-upc-scan"></i></span>
+                <input id="product-id" type="number" class="form-control" placeholder="Product ID">
                 <div class="error"></div>
               </div>
+
+              <!-- Product Description -->
               <div class="input-group mb-3 p-3">
-                <span class="input-group-text"><i class="bi bi-at"></i></span>
-                <input id="email" type="email" class="form-control" placeholder="Email">
+                <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                <textarea id="product-description" class="form-control" placeholder="Product Description"></textarea>
                 <div class="error"></div>
               </div>
+
+              <!-- Product Category -->
               <div class="input-group mb-3 p-3">
-                <span class="input-group-text"><i class="bi bi-asterisk"></i></span>
-                <input id="password" type="password" class="form-control" placeholder="Password">
+                <span class="input-group-text"><i class="bi bi-tags-fill"></i></span>
+                <select id="product-category" class="form-select">
+                  <option value="">Select Category</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Computers">Computers</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Home Appliances">Home Appliances</option>
+                  <!-- Add more categories as needed -->
+                </select>
                 <div class="error"></div>
               </div>
+
+              <!-- Product Price -->
               <div class="input-group mb-3 p-3">
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input id="password2" type="password" class="form-control" placeholder="Confirm password">
+                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                <input id="product-price" type="number" step="0.01" class="form-control" placeholder="Product Price">
                 <div class="error"></div>
               </div>
+
+              <!-- Submit Button -->
               <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                <button type="submit" class="btn btn-custom">Join now</button>
+                <button type="submit" class="btn btn-custom">Add Product</button>
               </div>
-              <p id="thank-you-message" style="display:none;">Thank you for joining!</p>
+              <p id="thank-you-message" style="display:none;">Product added!</p>
             </form>
             <!-- Form end -->
 
@@ -101,7 +117,6 @@
               <h4>Submitted form data (JSON):</h4>
               <pre id="json-data"></pre>
             </div>
-
           </div>
         </div>
       </div>

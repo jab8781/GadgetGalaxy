@@ -1,8 +1,8 @@
-const form = document.getElementById('form');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
+const form = document.getElementById('product-form');
+const productId = document.getElementById('product-id');
+const productDescription = document.getElementById('product-description');
+const productCategory = document.getElementById('product-category');
+const productPrice = document.getElementById('product-price');
 const thankYouMessage = document.getElementById('thank-you-message');
 const jsonOutput = document.getElementById('json-output');
 const jsonData = document.getElementById('json-data');
@@ -13,10 +13,10 @@ form.addEventListener('submit', e => {
     if (validateInputs()) {
         // Create the JSON object after successful validation
         const formData = {
-            username: username.value.trim(),
-            email: email.value.trim(),
-            password: password.value.trim(),
-            confirmPassword: password2.value.trim()
+            productId: productId.value.trim(),
+            productDescription: productDescription.value.trim(),
+            productCategory: productCategory.value,
+            productPrice: parseFloat(productPrice.value).toFixed(2)
         };
 
         // Display thank you message
@@ -50,53 +50,45 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
 const validateInputs = () => {
-    const usernameValue = username.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
+    const productIdValue = productId.value.trim();
+    const productDescriptionValue = productDescription.value.trim();
+    const productCategoryValue = productCategory.value;
+    const productPriceValue = productPrice.value.trim();
     let isValid = true;  // Track if the form is valid
 
-    if(usernameValue === '') {
-        setError(username, 'Username is required');
+    if (productIdValue === '') {
+        setError(productId, 'Product ID is required');
+        isValid = false;
+    } else if (!/^\d{8}$/.test(productIdValue)) {
+        setError(productId, 'Product ID must be exactly 8 digits');
         isValid = false;
     } else {
-        setSuccess(username);
+        setSuccess(productId);
     }
 
-    if(emailValue === '') {
-        setError(email, 'Email is required');
-        isValid = false;
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
+    if (productDescriptionValue === '') {
+        setError(productDescription, 'Product description is required');
         isValid = false;
     } else {
-        setSuccess(email);
+        setSuccess(productDescription);
     }
 
-    if(passwordValue === '') {
-        setError(password, 'Password is required');
-        isValid = false;
-    } else if (passwordValue.length < 8) {
-        setError(password, 'Password must be at least 8 characters long');
+    if (productCategoryValue === '') {
+        setError(productCategory, 'Product category is required');
         isValid = false;
     } else {
-        setSuccess(password);
+        setSuccess(productCategory);
     }
 
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
+    if (productPriceValue === '') {
+        setError(productPrice, 'Product price is required');
         isValid = false;
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords don't match");
+    } else if (isNaN(productPriceValue) || parseFloat(productPriceValue) <= 0) {
+        setError(productPrice, 'Provide a valid price greater than 0');
         isValid = false;
     } else {
-        setSuccess(password2);
+        setSuccess(productPrice);
     }
 
     return isValid;  // Return whether the form is valid
@@ -104,7 +96,7 @@ const validateInputs = () => {
 
 // Function to clear validation error/success styles and messages
 const clearValidation = () => {
-    const inputs = [username, email, password, password2];
+    const inputs = [productId, productDescription, productCategory, productPrice];
     inputs.forEach(input => {
         const inputControl = input.parentElement;
         const errorDisplay = inputControl.querySelector('.error');
