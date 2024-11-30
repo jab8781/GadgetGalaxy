@@ -80,3 +80,44 @@ body::before {
 .navbar-light .navbar-nav .nav-link:hover {
     color: #ff6f61;
 }
+
+.form-container {
+    background-color: #29292a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-container label {
+    color: #333;
+    font-weight: 500;
+}
+
+.input-group.success input {
+    border-color: #09c372;
+}
+
+.input-group.error input {
+    border-color: #ff3860;
+}
+
+.input-group .error {
+    color: #ff3860;
+    font-size: 15px;
+    height: 13px;
+}
+
+#thank-you-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #3939c8;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 18px;
+    display: none;
+}
+
+#thank-you-message.show {
+    display: block;
+}
